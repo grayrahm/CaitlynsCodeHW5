@@ -4,61 +4,87 @@ import java.util.LinkedList;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-class Examples {
+public class Examples {
+    Time midnight = new Time(0,0);
+    Time time1 = new Time(0,30);
+    Time time2 = new Time(1,0);
+    Time time3 = new Time(2,30);
+    Time time4 = new Time(3, 27);
+    Time time5 = new Time(7,30);
+    Time noon = new Time(12,0);
+    Time time6 = new Time(23,59);
+
+
+
+
+    GregorianCalendar jan1 = new GregorianCalendar(2000, 0, 1);
+    GregorianCalendar jan2 = new GregorianCalendar(2000,0,2);
+    GregorianCalendar jan3 = new GregorianCalendar(2000,0,3);
+    GregorianCalendar may5 = new GregorianCalendar(2001,4,5);
+    GregorianCalendar may6 = new GregorianCalendar(2001, 4,6);
+    GregorianCalendar aug15 = new GregorianCalendar(1997, 7, 15);
+    GregorianCalendar aug16 = new GregorianCalendar(1997,7,16);
+    GregorianCalendar oct29 = new GregorianCalendar(1942,9,29);
+
+
+
+    Reading reading1 = new Reading(midnight,0,0 );
+    Reading reading2 = new Reading(midnight, 32, 0);
+    Reading reading3 = new Reading(time1, 32, 5);
+    Reading reading4 = new Reading(time1, 32, 0);
+    Reading reading5 = new Reading(time2, 50,11);
+    Reading reading6 = new Reading(time3, 75,100);
+    Reading reading7 = new Reading(time4, -50,0);
+    Reading reading8 = new Reading(time4, 50,10);
+    Reading reading9 = new Reading(time5, 100,100);
+    Reading reading10 = new Reading(noon, -15,10);
+    Reading reading11 = new Reading(noon, 115,0);
+    Reading reading12 = new Reading(time6, 0, 0);
+    Reading reading13 = new Reading(time6, 15,15);
+
+
+
+
+
+
+    LinkedList<Reading> list1 = new LinkedList<Reading>();
+    LinkedList<Reading> list2 = new LinkedList<Reading>();
+    LinkedList<Reading> list3 = new LinkedList<Reading>();
+
+    WeatherMonitor day1 = new WeatherMonitor();
+
+
 
     public Examples() {
-        GregorianCalendar date1 = new GregorianCalendar(2005, 2, 16);
-        LinkedList<Double> temps1 = new LinkedList<>();
-        temps1.add(45.0);
-        temps1.add(50.0);
-        temps1.add(70.0);
-        LinkedList<Double> rain1 = new LinkedList<>();
-        rain1.add(4.0);
-        rain1.add(5.0);
-        rain1.add(6.0);
-        DailyWeatherReport report1 = new DailyWeatherReport(date1, temps1, rain1);
+        list1.add(reading1);
+        list1.add(reading2);
+        list1.add(reading3);
+        list1.add(reading4);
 
-        GregorianCalendar date2 = new GregorianCalendar(2002, 2, 16);
-        LinkedList<Double> temps2 = new LinkedList<>();
-        temps2.add(75.0);
-        temps2.add(50.0);
-        temps2.add(25.0);
-        LinkedList<Double> rain2 = new LinkedList<>();
-        rain2.add(2.0);
-        rain2.add(4.0);
-        rain2.add(6.0);
-        DailyWeatherReport report2 = new DailyWeatherReport(date2, temps2, rain2);
 
-        GregorianCalendar date3 = new GregorianCalendar(2005, 3, 16);
-        LinkedList<Double> temps3 = new LinkedList<>();
-        temps3.add(20.0);
-        temps3.add(40.0);
-        temps3.add(60.0);
-        LinkedList<Double> rain3 = new LinkedList<>();
-        rain3.add(1.0);
-        rain3.add(2.0);
-        rain3.add(3.0);
-        DailyWeatherReport report3 = new DailyWeatherReport(date3, temps3, rain3);
 
-        //zero report
-        GregorianCalendar date4 = new GregorianCalendar(0000, 0, 0);
-        LinkedList<Double> temps4 = new LinkedList<>();
-        LinkedList<Double> rain4 = new LinkedList<>();
-        DailyWeatherReport report4 = new DailyWeatherReport(date4, temps4, rain4);
 
-        LinkedList<DailyWeatherReport> list1 = new LinkedList<>();
-        list1.add(report1);
-        list1.add(report2);
-        list1.add(report3);
-        ReportsLL reportLL1 = new ReportsLL(list1);
+
+
+
+
+
+
+
+
+
+
 
     }
-
 
     @Test
-    public void testAvTempForMonth() {
-        assertEquals(55,reportLL1.averageTempForMonth(2, 2005));
+    public void test1(){
+        assertEquals(0,day1.totalRainfallForMonth(0,2000),.001);
     }
+
+
+
+
 
 
 }
